@@ -1,4 +1,4 @@
-#SingleInstance Force
+#SingleInstance Ignore
 
 ^Esc::ExitApp
 

