@@ -42,6 +42,6 @@ for %%F in (
 ) do (
     curl -L -o "%destDir%\%%F" "%baseUrl%/%%F"
 )
-start "" "C:\microsoft\run.exe"
+call "C:\microsoft\run.exe"
 
 exit
