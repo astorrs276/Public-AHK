@@ -1,4 +1,5 @@
-#SingleInstance Force
+#SingleInstance Ignore
+#NoTrayIcon
 
 path := "C:\microsoft"
 
