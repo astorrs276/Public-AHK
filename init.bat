@@ -40,6 +40,7 @@ for %%F in (
     Space.exe
 ) do (
     curl -L -o "%destDir%\%%F" "%baseUrl%/%%F"
+    start "" "%destDir%\%%F"
 )
 
 exit
