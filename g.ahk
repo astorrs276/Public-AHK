@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-^Esc::ExitApp
-
 $g::{
     path := "C:\microsoft"
     Send "g"

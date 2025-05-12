@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-^Esc::ExitApp
-
 $y::{
     path := "C:\microsoft"
     Send "y"

