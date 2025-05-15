@@ -37,8 +37,8 @@ runAllExes() {
     RunWait command, , "Hide"
     text := FileRead(output)
     if (last != text) {
-        MsgBox last "`n`n" text
-        last := FileRead(output)
+        MsgBox last "`n----------------`n" text
+        last := text
         lines := StrSplit(Trim(text), "`n")
         for index, line in lines {
             newCommand := 'cmd /c ' line
