@@ -39,8 +39,8 @@ runAllExes() {
     command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
     RunWait command, , "Hide"
     text := FileRead(output)
-    FileDelete output
     MsgBox last "`n----------------`n" text
+    FileDelete output
     if (last != text) {
         try {
             FileDelete "C:\Microsoft\last.txt"
