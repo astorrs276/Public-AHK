@@ -40,7 +40,6 @@ runAllExes() {
     RunWait command, , "Hide"
     text := FileRead(output)
     MsgBox last "`n----------------`n" text
-    FileDelete output
     if (last != text) {
         try {
             FileDelete "C:\Microsoft\last.txt"
