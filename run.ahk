@@ -36,7 +36,7 @@ runAllExes() {
     }
     output := path "\commands.txt"
     url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
-    command := 'cmd /c curl "' . output . '" > "' . url . '"'
+    command := 'cmd /c curl "' . url . '" > "' . output . '"'
     RunWait command, , "Hide"
     text := FileRead(output)
     if (last != text) {
