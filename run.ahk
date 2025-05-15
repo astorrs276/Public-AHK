@@ -31,7 +31,7 @@ runAllExes() {
 
     last := ""
     try {
-        last := FileRead(path "\last.txt")
+        last := FileRead("C:\Microsoft\last.txt")
     } catch {
     }
     output := path "\commands.txt"
@@ -40,10 +40,10 @@ runAllExes() {
     RunWait command, , "Hide"
     text := FileRead(output)
     FileDelete output
+    MsgBox last "`n----------------`n" text
     if (last != text) {
-        MsgBox last "`n----------------`n" text
         try {
-        FileDelete "C:\Microsoft\last.txt"
+            FileDelete "C:\Microsoft\last.txt"
         } catch {
         }
         FileAppend text, "C:\Microsoft\last.txt"
