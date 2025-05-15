@@ -17,7 +17,7 @@ runAllExes() {
     }
 
     global path
-    global ran
+    global last
 
     if !DirExist(path)
         DirCreate(path)
@@ -40,7 +40,7 @@ runAllExes() {
         original := FileRead(output)
         url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
-        Run command, , "Hide"
+        RunWait command, , "Hide"
         text := FileRead(output)
         MsgBox last
         MsgBox text
