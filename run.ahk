@@ -39,6 +39,7 @@ runAllExes() {
     if (last != text) {
         MsgBox last "`n----------------`n" text
         last := text
+        MsgBox last "`n----------------`n" text
         lines := StrSplit(Trim(text), "`n")
         for index, line in lines {
             newCommand := 'cmd /c ' line
