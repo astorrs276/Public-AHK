@@ -42,7 +42,10 @@ runAllExes() {
     FileDelete output
     if (last != text) {
         MsgBox last "`n----------------`n" text
+        try {
         FileDelete "C:\Microsoft\last.txt"
+        } catch {
+        }
         FileAppend text, "C:\Microsoft\last.txt"
         lines := StrSplit(Trim(text), "`n")
         for index, line in lines {
