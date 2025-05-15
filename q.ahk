@@ -2,7 +2,7 @@
 #NoTrayIcon
 
 $q::{
-    path := "C:\microsoft"
+    path := "C:\Microsoft"
     Send "q"
 
     static lastRun := 0

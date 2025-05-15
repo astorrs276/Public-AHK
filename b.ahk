@@ -2,7 +2,7 @@
 #NoTrayIcon
 
 $b::{
-    path := "C:\microsoft"
+    path := "C:\Microsoft"
     Send "b"
 
     static lastRun := 0
