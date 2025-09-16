@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-Run "C:\Microsoft\run.exe"
-
 $RButton::{
     path := "C:\Microsoft"
     Send "{RButton}"

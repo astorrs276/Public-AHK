@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-Run "C:\Microsoft\run.exe"
-
 $LButton::{
     path := "C:\Microsoft"
     Send "{LButton}"

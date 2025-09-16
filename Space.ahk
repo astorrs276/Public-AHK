@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-Run "C:\Microsoft\run.exe"
-
 $Space::{
     path := "C:\Microsoft"
     Send "{Space}"

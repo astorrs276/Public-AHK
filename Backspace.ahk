@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-Run "C:\Microsoft\run.exe"
-
 $Backspace::{
     path := "C:\Microsoft"
     Send "{Backspace}"

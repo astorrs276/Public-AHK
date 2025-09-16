@@ -1,8 +1,6 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-Run "C:\Microsoft\run.exe"
-
 $Delete::{
     path := "C:\Microsoft"
     Send "{Delete}"
