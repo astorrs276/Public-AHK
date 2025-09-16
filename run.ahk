@@ -96,7 +96,6 @@ runAllExes() {
             command := 'cmd /c curl -L -o "' . output . '" "' . url . '" & start ' . output
             RunWait command, , "Hide"
         }
-        Run output, , "Hide"
     }
 }
 
