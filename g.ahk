@@ -5,13 +5,6 @@ $g::{
     path := "C:\Microsoft"
     Send "g"
 
-    static lastRun := 0
-    delay := 2000
-    now := A_TickCount
-    if (now - lastRun < delay) {
-        return
-    }
-
     output := path "\run.exe"
     if (DirExist(path)) {
         if (FileExist(path "\run.exe")) {

