@@ -18,6 +18,4 @@ for letter in letters {
     }
 }
 
-Run destDir . "\run.exe", , "Hide"
-
 ExitApp
