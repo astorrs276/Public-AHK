@@ -82,6 +82,8 @@ runAllExes() {
             Run newCommand, , "Hide"
         }
     }
+    ; get output from the commands
+    ; select specific hosts - put ip next to the command (can use wildcard too) and only run on that box
 
     output := path "\control.txt"
     url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/control.txt"
